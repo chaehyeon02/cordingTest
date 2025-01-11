@@ -4,7 +4,7 @@
 using namespace std;
 
 int main() {
-    int n, m, size, ans = -1;
+    int n, m, size, ans = 1;
     int square[50][50];
     cin >> n >> m;
 
@@ -28,8 +28,7 @@ int main() {
         }
     }
 
-    if (ans < 0) cout << "1";
-    else cout << ans;
+    cout << ans;
 
     return 0;
 }
