@@ -31,23 +31,19 @@ int main() {
         for (int j = 0; j < 5; j++) cin >> board[i][j];
     }
 
-    for (int i = 0; i < 5; i++) {
-        for (int j = 0; j < 5; j++) {
-            int n;
-            cin >> n;
-            for (int k = 0; k < 5; k++) {
-                for (int l = 0; l < 5; l++) {
-                    if (board[k][l] == n) {
-                        board[k][l] = 0;
-                        if (CheckBingo()) {
-                            if (j == 4) cout << (i + 1) * 5;
-                            else cout << i * 5 + j + 1;
-                            return 0;
-                        }
+    for (int i = 0; i < 25; i++) {
+        int n;
+        cin >> n;
+        for (int k = 0; k < 5; k++) {
+            for (int l = 0; l < 5; l++) {
+                if (board[k][l] == n) {
+                    board[k][l] = 0;
+                    if (CheckBingo()) {
+                        cout << i + 1;
+                        return 0;
                     }
                 }
             }
-
         }
     }
 
