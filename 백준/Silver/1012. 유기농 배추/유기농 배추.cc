@@ -1,42 +1,46 @@
 #include <iostream>
+#include <algorithm>
 using namespace std;
 
-bool farm[50][50] = { false };
-int n, m;
+int t, m, n, k, x, y, ans;
+int field[50][50];
+int xpos[4] = {0, 0, -1, 1};
+int ypos[4] = {1, -1, 0, 0};
 
-void CheckAround(int y, int x) {
-	if (farm[y][x] == false) return;
-	farm[y][x] = false;
-
-	if (y != 0) CheckAround(y - 1, x);
-	if (y != n - 1) CheckAround(y + 1, x);
-	if (x != 0) CheckAround(y, x - 1);
-	if (x != m - 1) CheckAround(y, x + 1);
+void dfs(int x, int y) {
+	field[x][y] = 0;
+	for (int i = 0; i < 4; i++) {
+		int xx = x + xpos[i];
+		int yy = y + ypos[i];
+		if (xx < 0 || yy < 0 || xx >= m || yy >= n) continue;
+		if (field[xx][yy] == 1) {
+			dfs(xx, yy);
+		}
+	}
 }
 
 int main() {
-	int t, k;
 	cin >> t;
-
-	for (int i = 0; i < t; i++) {
+	for (int q = 0; q < t; q++) {
 		cin >> m >> n >> k;
-		for (int j = 0; j < k; j++) {
-			int x, y;
+		for (int i = 0; i < k; i++) {
 			cin >> x >> y;
-			farm[y][x] = true;
+			field[x][y] = 1;
 		}
 
-		int worm = 0;
-		for (int y = 0; y < n; y++) {
-			for (int x = 0; x < m; x++) {
-				if (farm[y][x] == true) {
-					CheckAround(y, x);
-					worm++;
+		for (int i = 0; i < m; i++) {
+			for (int j = 0; j < n; j++) {
+				if (field[i][j] == 1) {
+					dfs(i, j);
+					ans++;
 				}
 			}
 		}
-		cout << worm << "\n";
-	}
 
-	return 0;
+		cout << ans << '\n';
+		ans = 0;
+		for (int i = 0; i < m; i++) {
+			fill(field[i], field[i] + n, 0);
+		}
+	}
 }
