@@ -7,13 +7,7 @@ void bfs(int n, int k) {
 	bool visitNum[100001] = { false };
 
 	q.push(make_pair(n, 0));
-	visitNum[n] = true;
 	while (!q.empty()) {
-		/*if ((q.front().first < 0 || q.front().first > 100000) && visitNum[q.front().first]) {
-			q.pop();
-			continue;
-		}*/
-
 		if (q.front().first == k) {
 			cout << q.front().second;
 			return;
