@@ -1,5 +1,5 @@
 #include <iostream>
-#include <unordered_map>
+#include <algorithm>
 using namespace std;
 
 int main() {
@@ -7,17 +7,19 @@ int main() {
 	cin.tie(0);
 
 	int n, m, x;
-	unordered_map<int, int> arr;
+	int arr[500000];
+	
 	cin >> n;
 	for (int i = 0; i < n; i++) {
 		cin >> x;
-		arr[x]++;
+		arr[i] = x;
 	}
+	sort(arr, arr + n);
 
 	cin >> m;
 	for (int i = 0; i < m; i++) {
 		cin >> x;
-		cout << arr[x] << " ";
+		cout << upper_bound(arr, arr + n, x) - lower_bound(arr, arr + n, x) << " ";
 	}
 
 	return 0;
