@@ -1,5 +1,5 @@
 #include <iostream>
-#include <map>
+#include <unordered_map>
 using namespace std;
 
 int main() {
@@ -7,7 +7,7 @@ int main() {
 	cin.tie(0);
 
 	int n, m, x;
-	map<int, int> arr;
+	unordered_map<int, int> arr;
 	cin >> n;
 	for (int i = 0; i < n; i++) {
 		cin >> x;
