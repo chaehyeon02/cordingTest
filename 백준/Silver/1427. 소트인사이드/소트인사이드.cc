@@ -1,6 +1,5 @@
 #include <iostream>
 #include <string>
-#include <vector>
 #include <algorithm>
 using namespace std;
 
@@ -9,12 +8,9 @@ int main() {
     cin.tie(0);
 
     string s;
-    vector<int> v;
     cin >> s;
-
-    for (int i = 0; i < s.length(); i++) v.push_back(s[i] - 48);
-    sort(v.rbegin(), v.rend());
-    for (int i = 0; i < s.length(); i++) cout << v[i];
+    sort(s.begin(), s.end(), greater<char>());
+    cout << s;
 
     return 0;
 }
