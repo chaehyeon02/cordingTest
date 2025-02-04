@@ -9,7 +9,7 @@ int main() {
 
     int n, m;
     string tmp;
-    set<string> listen, watch, both;
+    set<string> listen, both;
     cin >> n >> m;
 
     for (int i = 0; i < n; i++) {
@@ -18,11 +18,7 @@ int main() {
     }
     for (int i = 0; i < m; i++) {
         cin >> tmp;
-        watch.insert(tmp);
-    }
-
-    for (string i : listen) {
-        if (watch.find(i) != watch.end()) both.insert(i);
+        if (listen.find(tmp) != listen.end()) both.insert(tmp);
     }
 
     cout << both.size() << "\n";
