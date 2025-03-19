@@ -7,8 +7,6 @@ class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         boolean[][] paper = new boolean[100][100];
-        for(boolean[] b : paper)
-            Arrays.fill(b, false);
 
         int t = Integer.parseInt(br.readLine());
         for(int i = 0; i < t; i++) {
